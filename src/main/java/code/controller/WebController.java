@@ -1,11 +1,7 @@
-package com.cod.controller;
-// Copyright (c) 2023, NoCodeNoLife-cloud. All rights reserved.
-// Author: nightCrawler ( NoCodeNoLife )
-// Created: 2023/10/27 21:19
-import com.cod.entity.Users;
-import com.cod.service.MyUserDetailsService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+package code.controller;
+
+import code.entity.Users;
+import code.service.MyUserDetailsService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -14,39 +10,27 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * WebController
- * @author admin
- */
-@Slf4j
 @Controller
 public class WebController {
-	/**
-	 * manager
-	 */
-	@Autowired
-	private UserDetailsManager manager;
-	/**
-	 * encoder
-	 */
-	@Autowired
-	private PasswordEncoder encoder;
-	/**
-	 * myUserDetailsService
-	 */
-	@Autowired
-	private MyUserDetailsService myUserDetailsService;
-	/**
-	 * authenticationManager
-	 */
-	@Autowired
-	private AuthenticationManager authenticationManager;
+	private final UserDetailsManager manager;
+	private final PasswordEncoder encoder;
+	private final MyUserDetailsService myUserDetailsService;
+	private final AuthenticationManager authenticationManager;
+
+	public WebController(UserDetailsManager manager, PasswordEncoder encoder, MyUserDetailsService myUserDetailsService, AuthenticationManager authenticationManager) {
+		this.manager = manager;
+		this.encoder = encoder;
+		this.myUserDetailsService = myUserDetailsService;
+		this.authenticationManager = authenticationManager;
+	}
 
 	/**
 	 * changePassword
+	 *
 	 * @param oldPassword     oldPassword
 	 * @param newPassword     newPassword
 	 * @param confirmPassword confirmPassword
+	 *
 	 * @return String
 	 */
 	@RequestMapping("/user/changePassword")
@@ -80,8 +64,10 @@ public class WebController {
 
 	/**
 	 * register
+	 *
 	 * @param username username
 	 * @param password password
+	 *
 	 * @return String
 	 */
 	@RequestMapping("/user/register")
@@ -95,6 +81,7 @@ public class WebController {
 
 	/**
 	 * changePassword
+	 *
 	 * @return String
 	 */
 	@RequestMapping("/changePassword")
@@ -104,6 +91,7 @@ public class WebController {
 
 	/**
 	 * register
+	 *
 	 * @return String
 	 */
 	@RequestMapping("/register")
@@ -113,6 +101,7 @@ public class WebController {
 
 	/**
 	 * loging
+	 *
 	 * @return String
 	 */
 	@RequestMapping("/login")
@@ -122,6 +111,7 @@ public class WebController {
 
 	/**
 	 * index
+	 *
 	 * @return String
 	 */
 	@RequestMapping("/index")

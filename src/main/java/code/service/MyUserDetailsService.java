@@ -1,29 +1,27 @@
-package com.cod.service;
+package code.service;
 
-import com.cod.dao.UsersDao;
-import com.cod.entity.Users;
-import org.springframework.beans.factory.annotation.Autowired;
+import code.dao.UsersDao;
+import code.entity.Users;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-/**
- * MyUserDetailsService
- * @author admin
- */
 @Service
 public class MyUserDetailsService {
-	/**
-	 * usersDao
-	 */
-	@Autowired
-	private UsersDao usersDao;
+	private final UsersDao usersDao;
+
+	public MyUserDetailsService(UsersDao usersDao) {
+		this.usersDao = usersDao;
+	}
 
 	/**
 	 * loadUserByUsername
+	 *
 	 * @param username username
+	 *
 	 * @return UserDetails
+	 *
 	 * @throws UsernameNotFoundException UsernameNotFoundException
 	 */
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -36,7 +34,9 @@ public class MyUserDetailsService {
 
 	/**
 	 * deleteByPrimaryKey
+	 *
 	 * @param username username
+	 *
 	 * @return data
 	 */
 	public int deleteByPrimaryKey(String username) {
@@ -45,7 +45,9 @@ public class MyUserDetailsService {
 
 	/**
 	 * insert
+	 *
 	 * @param record record
+	 *
 	 * @return data
 	 */
 	public int insert(Users record) {
@@ -54,7 +56,9 @@ public class MyUserDetailsService {
 
 	/**
 	 * insertSelective
+	 *
 	 * @param record record
+	 *
 	 * @return data
 	 */
 	public int insertSelective(Users record) {
@@ -63,7 +67,9 @@ public class MyUserDetailsService {
 
 	/**
 	 * selectByPrimaryKey
+	 *
 	 * @param username username
+	 *
 	 * @return Users
 	 */
 	public Users selectByPrimaryKey(String username) {
@@ -72,7 +78,9 @@ public class MyUserDetailsService {
 
 	/**
 	 * updateByPrimaryKeySelective
+	 *
 	 * @param record record
+	 *
 	 * @return data
 	 */
 	public int updateByPrimaryKeySelective(Users record) {
@@ -81,7 +89,9 @@ public class MyUserDetailsService {
 
 	/**
 	 * updateByPrimaryKey
+	 *
 	 * @param record record
+	 *
 	 * @return data
 	 */
 	public int updateByPrimaryKey(Users record) {

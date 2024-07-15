@@ -39,6 +39,6 @@
     <root level="INFO">
         <!-- Output all logger messages to the defined BAR-STDOUT appender -->
         <appender-ref ref="CONSOLE-STDOUT"/>
-<!--        <appender-ref ref="ASYNC-ALL"/>-->
+        <!--        <appender-ref ref="ASYNC-ALL"/>-->
     </root>
 </configuration>

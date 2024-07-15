@@ -1,63 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cod.dao.UsersDao">
-  <resultMap id="BaseResultMap" type="com.cod.entity.Users">
-    <id column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    username, `password`, enabled
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from users
-    where username = #{username,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from users
-    where username = #{username,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" keyColumn="username" keyProperty="username" parameterType="com.cod.entity.Users" useGeneratedKeys="true">
-    insert into users (`password`, enabled)
-    values (#{password,jdbcType=VARCHAR}, #{enabled,jdbcType=BOOLEAN})
-  </insert>
-  <insert id="insertSelective" keyColumn="username" keyProperty="username" parameterType="com.cod.entity.Users" useGeneratedKeys="true">
-    insert into users
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="password != null">
-        `password`,
-      </if>
-      <if test="enabled != null">
-        enabled,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="enabled != null">
-        #{enabled,jdbcType=BOOLEAN},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cod.entity.Users">
-    update users
-    <set>
-      <if test="password != null">
-        `password` = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="enabled != null">
-        enabled = #{enabled,jdbcType=BOOLEAN},
-      </if>
-    </set>
-    where username = #{username,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cod.entity.Users">
-    update users
-    set `password` = #{password,jdbcType=VARCHAR},
-      enabled = #{enabled,jdbcType=BOOLEAN}
-    where username = #{username,jdbcType=VARCHAR}
-  </update>
+    <resultMap id="BaseResultMap" type="com.cod.entity.Users">
+        <id column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="enabled" jdbcType="BOOLEAN" property="enabled"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        username, `password`, enabled
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from users
+        where username = #{username,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" keyColumn="username" keyProperty="username" parameterType="com.cod.entity.Users" useGeneratedKeys="true">
+        insert into users (`password`, enabled)
+        values (#{password,jdbcType=VARCHAR}, #{enabled,jdbcType=BOOLEAN})
+    </insert>
+    <insert id="insertSelective" keyColumn="username" keyProperty="username" parameterType="com.cod.entity.Users" useGeneratedKeys="true">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=BOOLEAN},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cod.entity.Users">
+        update users
+        <set>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=BOOLEAN},
+            </if>
+        </set>
+        where username = #{username,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cod.entity.Users">
+        update users
+        set `password` = #{password,jdbcType=VARCHAR},
+            enabled    = #{enabled,jdbcType=BOOLEAN}
+        where username = #{username,jdbcType=VARCHAR}
+    </update>
 </mapper>

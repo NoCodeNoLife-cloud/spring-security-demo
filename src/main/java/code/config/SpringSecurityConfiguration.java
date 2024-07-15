@@ -1,18 +1,13 @@
-package com.cod.config;
-// ============================================================
-// Copyright (c) 2024, NoCodeNoLife-cloud. All rights reserved.
-// Author: nightCrawler ( NoCodeNoLife )
-// Created: 2024/04/04 16:16
-// ============================================================
-import lombok.extern.slf4j.Slf4j;
+package code.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -21,15 +16,11 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 import javax.sql.DataSource;
 
-/**
- * SecurityConfiguration
- * @author admin
- */
-@Slf4j
 @Configuration
 public class SpringSecurityConfiguration {
 	/**
 	 * passwordEncoder
+	 *
 	 * @return PasswordEncoder
 	 */
 	@Bean
@@ -40,8 +31,10 @@ public class SpringSecurityConfiguration {
 
 	/**
 	 * userDetailsService
+	 *
 	 * @param dataSource            dataSource
 	 * @param authenticationManager authenticationManager
+	 *
 	 * @return UserDetailsManager
 	 */
 	@Bean
@@ -53,8 +46,10 @@ public class SpringSecurityConfiguration {
 
 	/**
 	 * authenticationManager
+	 *
 	 * @param dataSource dataSource
 	 * @param encoder    encoder
+	 *
 	 * @return AuthenticationManager
 	 */
 	@Bean
@@ -68,8 +63,11 @@ public class SpringSecurityConfiguration {
 
 	/**
 	 * filterChain
+	 *
 	 * @param http http
+	 *
 	 * @return SecurityFilterChain
+	 *
 	 * @throws Exception Exception
 	 */
 	@Bean
